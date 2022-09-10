@@ -1,9 +1,11 @@
 from . import bp as auth
 from flask import jsonify, request
+from .models import User
+from .http_auth import basic_auth, token_auth
 
 
 # Create a user
-@auth .route('/users', method=['POST'])
+@auth.route('/users', methods=['POST'])
 def create_user():
     data = request.json
     #check if that is no empty fields
@@ -23,3 +25,22 @@ def create_user():
     #Put all information we got, to the dictonary
     return jsonify(new_user.to_dict())
 
+
+#Give a token to user, after he logs into his account
+@auth.route('/token', methods = ['POST'])
+@basic_auth.login_required()
+def get_token():
+    user = basic_auth.current_user()
+    #give a token to user
+    token = user.get_token()
+    #Return a token as JSON 
+    return jsonify({'token': token})
+
+
+
+#Get user information from token
+@auth.route('/me')
+#Making sure that he have a token and logged in
+@token_auth.login_required
+def me():
+    return token_auth.current_user().to_dict()
