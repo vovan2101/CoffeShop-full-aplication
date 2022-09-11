@@ -1,3 +1,4 @@
+from crypt import methods
 from . import bp as cart
 from flask import jsonify, request
 from .models import Cart
@@ -25,3 +26,11 @@ def get_carts():
 def get_cart(cart_id):
     cart = Cart.query.get_or_404(cart_id)
     return jsonify(cart.to_dict())
+
+
+@cart.route('/add', methods=['POST'])
+def add_product_to_cart(item_name, item_price):
+    cart_items = []
+    cart_total = 0
+    cart_summary = dict((item, cart_items.count(item)) for item in cart_items)
+    return 

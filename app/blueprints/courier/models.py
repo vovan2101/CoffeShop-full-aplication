@@ -1,6 +1,5 @@
 from app import db
-from app.blueprints.orders import Order
-from app.blueprints.auth import User
+
 
 class Courier(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,9 +14,11 @@ class Courier(db.Model):
         db.session.commit()
 
     def to_dict(self):
+        from app.blueprints.orders import Order
+        from app.blueprints.auth import User
         return {
             'id': self.id,
             'name': self.name,
             'order_id': Order.query.get(self.order_id),
-            'user_id': User.query.get(self.user_id)
+            'user_courier': User.query.get(self.user_id)
         }

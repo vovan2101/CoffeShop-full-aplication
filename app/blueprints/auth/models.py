@@ -18,7 +18,7 @@ class User(db.Model):
     token_expiration = db.Column(db.DateTime)
     orders_id = db.relationship('Order', backref='buyer', lazy = True)
     cart = db.relationship('Cart', backref='user_cart')
-    courier_id = db.relationship('Courier', backref='user_id')
+    courier_id = db.relationship('Courier', backref='user_courier')
 
 
     #Hashing users password + adding data in database

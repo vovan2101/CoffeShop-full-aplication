@@ -27,3 +27,4 @@ app.register_blueprint(things)
 
 from app.blueprints.courier import bp as courier
 app.register_blueprint(courier)
+

@@ -1,8 +1,6 @@
 from datetime import datetime
 from app import db
-from app.blueprints.auth import User
-from app.blueprints.courier import Courier
-from app.blueprints.things import Product
+
 
 
 
@@ -22,6 +20,9 @@ class Order(db.Model):
 
 
     def to_dict(self):
+        from app.blueprints.things import Product
+        from app.blueprints.courier import Courier
+        from app.blueprints.auth import User
         return {
             'id': self.id,
             'data_created': self.data_created,

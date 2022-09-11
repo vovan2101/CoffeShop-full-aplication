@@ -1,7 +1,5 @@
 import os
 from app import db
-from app.blueprints.things import Product
-from app.blueprints.auth import User
 
 
 
@@ -19,6 +17,8 @@ class Cart(db.Model):
 
      
     def to_dict(self):
+        from app.blueprints.things import Product
+        from app.blueprints.auth import User
         return {   
             'id': self.id,       
             'items': Product.query.get(self.items),
