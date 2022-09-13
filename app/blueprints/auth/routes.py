@@ -16,12 +16,12 @@ def create_user():
     #take data from email field
     email = data('email')
     #Check if email already exist
-    user_exist = User.query.filter((User.email == email)).all() ##################
+    user_exist = User.query.filter((User.email == email)).all() 
     #If it is exist, return back to the register
     if user_exist:
         return jsonify({'error': f'User with email {email} already exists'}), 400
     #If this email are not exist, create new User
-    new_user = User(**data) ########################
+    new_user = User(**data)
     #Put all information we got, to the dictonary
     return jsonify(new_user.to_dict())
 

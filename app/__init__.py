@@ -16,15 +16,8 @@ migrate = Migrate(app, db)
 from app.blueprints.auth import bp as auth
 app.register_blueprint(auth)
 
-from app.blueprints.orders import bp as orders
-app.register_blueprint(orders)
-
 from app.blueprints.cart import bp as cart
 app.register_blueprint(cart)
 
 from app.blueprints.things import bp as things
 app.register_blueprint(things)
-
-from app.blueprints.courier import bp as courier
-app.register_blueprint(courier)
-

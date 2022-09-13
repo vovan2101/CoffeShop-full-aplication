@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-bp = Blueprint('cart', __name__, url_prefix='/cart')
+bp = Blueprint('order', __name__, url_prefix='/order')
 
 from . import routes, models

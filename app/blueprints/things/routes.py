@@ -14,7 +14,3 @@ def get_item(product_id):
     item = Product.query.get_or_404(product_id)
     return jsonify(item.to_dict())
 
-
-# @product.route('/product_to_cart')
-# def product_to_cart():
-    

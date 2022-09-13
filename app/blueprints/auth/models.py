@@ -16,9 +16,7 @@ class User(db.Model):
     data_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     token = db.Column(db.String(32), unique=True, index=True)
     token_expiration = db.Column(db.DateTime)
-    orders_id = db.relationship('Order', backref='buyer', lazy = True)
-    cart = db.relationship('Cart', backref='user_cart')
-    courier_id = db.relationship('Courier', backref='user_courier')
+    cart = db.relationship('Cart', backref='user_cart', lazy = 'select', uselist=False)
 
 
     #Hashing users password + adding data in database
